@@ -8,6 +8,8 @@ import Loader from './components/Loader/loader';
 import Emprety from './components/emprety/emprety';
 import Filter from './components/Filter/Filter';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 class App extends Component {
 
   state = {
@@ -30,7 +32,7 @@ class App extends Component {
     if (!searchText) {
       searchText = 'man';
     }
-    fetch(`http://www.omdbapi.com/?s=${searchText}&apikey=b1aa013f&type=${this.state.filters}`)
+    fetch(`https://www.omdbapi.com/?s=${searchText}&apikey=${API_KEY}&type=${this.state.filters}`)
       .then((date) => date.json())
       .then((date) => this.setState({ films: date.Search, loading: false }))
       .catch((error) => this.setState({ films: [], errror: error, loading: false }))
@@ -43,6 +45,7 @@ class App extends Component {
 
   componentDidMount() {
 
+    console.log(API_KEY);
     this.GetMovie();
   }
 
