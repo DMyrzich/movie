@@ -3,14 +3,13 @@ import './App.css';
 import Heder from './components/Heder/Heder';
 import Footer from './components/Footer/Footer';
 import Search from './components/search/search';
-import CardList from './card/card-list/card-list';
+import CardList from './card/Cardlist/Cardlist';
 import Loader from './components/Loader/loader';
 import Emprety from './components/emprety/emprety';
 import Filter from './components/Filter/Filter';
 import Navigation from './components/Navigation/Navigation';
 import CardInfo from './card/CardInfo/CardInfo';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 

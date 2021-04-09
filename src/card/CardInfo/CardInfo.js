@@ -28,7 +28,7 @@ class CardInfo extends React.Component {
 
         return this.state.loading ? <Loader /> : (<div className="card info">
 
-            <a onClick={() => history.goBack() } className="btn-floating btn-large blue darken-1"><i className="material-icons">arrow_back</i></a>
+            <span onClick={() => history.goBack() } className="btn-floating btn-large blue darken-1"><i className="material-icons">arrow_back</i></span>
             <div>
                 <img className="activator" alt={Title} src={Poster} />
             </div>

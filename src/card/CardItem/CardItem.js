@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import './card-item.css'
+import './CardItem.css'
 
 const CardItem = (props) => {
 
@@ -12,9 +12,10 @@ const CardItem = (props) => {
         </div>
         <div className="card-content">
             <span className="card-title activator grey-text text-darken-4">{Title}</span>
-            <p>{Type}</p>
+            <p style={{ color: 'grey' }}>Жанр: {Type}</p>
+            <p>Посмотреть описание</p>
         </div>
-    </Link >)
+    </Link>)
 }
 
 export default withRouter(CardItem);
