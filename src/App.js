@@ -6,8 +6,7 @@ import Search from './components/search/search';
 import CardList from './card/Cardlist/Cardlist';
 import Loader from './components/Loader/loader';
 import Emprety from './components/emprety/emprety';
-import Filter from './components/Filter/Filter';
-import Navigation from './components/Navigation/Navigation';
+import Filter from './components/Filter/Filter'; 
 import CardInfo from './card/CardInfo/CardInfo';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
@@ -15,7 +14,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 class App extends Component {
 
-  state = {  
+  state = {
     films: [],
     searchText: '',
     loading: false,
@@ -68,7 +67,6 @@ class App extends Component {
                   {
                     loading ? <Loader /> : films && films.length > 0 ? <CardList films={films} /> : <Emprety />
                   }
-                  <Navigation />
                 </>)
             }} />
             <Route path="/movie/:id?" render={({ match }) => <CardInfo imdbID={match.params.id} />} />

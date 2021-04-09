@@ -6,7 +6,7 @@ const Search = ({ search, bntsearch, searchText }) => {
     return (<div class="row" style={{ margin: 0 }}>
         <div class="input-field col s6" style={{ width: '97%' }}>
             <i class="material-icons prefix">search</i>
-            <input id="icon_prefix" onKeyDown={
+            <input onKeyDown={
                 (event) => {
                     if (event.key === 'Enter') {
                         bntsearch()
