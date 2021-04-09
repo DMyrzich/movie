@@ -3,7 +3,7 @@ import Navigation from '../../components/Navigation/Navigation'
 import CardItems from '../CardItem/CardItem';
 import './Cardlist.css';
 
-const CardList = ({ films }) => {
+const CardList = ({ films, get, selectId, select }) => {
 
     return (
         <div>
@@ -12,7 +12,7 @@ const CardList = ({ films }) => {
                     films.map((data) => <CardItems key={data.imdbID.slice(2)} {...data} />)
                 }
             </div>
-            <Navigation />
+            <Navigation get={get} selectId={selectId} select={select} />
         </div>
     )
 }

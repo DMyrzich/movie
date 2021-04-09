@@ -1,19 +1,25 @@
 import React from 'react';
 
-const Navigation = () => {
+class Navigation extends React.Component {
 
-    return (<ul className="pagination" style={{ padding: 10 }}>
-        <li className="disabled"><a href="#!"><i className="material-icons">chevron_left</i></a></li>
-        <li className="active"><a href="#!">1</a></li>
-        <li className="waves-effect"><a href="#!">2</a></li>
-        <li className="waves-effect"><a href="#!">3</a></li>
-        <li className="waves-effect"><a href="#!">4</a></li>
-        <li className="waves-effect"><a href="#!">5</a></li>
-        <li className="waves-effect"><a href="#!">6</a></li>
-        <li className="waves-effect"><a href="#!">7</a></li>
-        <li className="waves-effect"><a href="#!">8</a></li>
-        <li className="waves-effect"><a href="#!"><i className="material-icons">chevron_right</i></a></li>
-    </ul>)
+    clasd = (id) => {
+
+        console.log(id, this.props.selectId);
+        return id === this.props.selectId ? "active blue darken-1" : "waves-effect";
+    }
+
+    render() {
+
+        const { selectId, select } = this.props;
+        const h = [0 + selectId, 1 + selectId, 2 + selectId, 3 + selectId, 4 + selectId, 5 + selectId];
+        return (<ul className="pagination" style={{ padding: 10 }}>
+            <li onClick={() => select(selectId - 1)} className="disabled"><a href="#!"><i className="material-icons">chevron_left</i></a></li>
+            {
+                h.map((indx) => <li onClick={() => select(indx)} className={this.clasd(indx)}><a href="#!">{indx}</a></li>)
+            }
+            <li onClick={() => select(selectId + 1)} className="disabled"><a href="#!"><i className="material-icons">chevron_right</i></a></li>
+        </ul >)
+    }
 }
 
 export default Navigation;
