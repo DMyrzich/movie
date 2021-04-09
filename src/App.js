@@ -7,16 +7,19 @@ import CardList from './card/card-list/card-list';
 import Loader from './components/Loader/loader';
 import Emprety from './components/emprety/emprety';
 import Filter from './components/Filter/Filter';
+import Navigation from './components/Navigation/Navigation';
+import CardInfo from './card/CardInfo/CardInfo';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class App extends Component {
 
-  state = {
-    count: 0,
-    start: false,
+  state = {  
     films: [],
     searchText: '',
+    loading: false,
     errror: null,
     filters: ''
   }
@@ -45,7 +48,6 @@ class App extends Component {
 
   componentDidMount() {
 
-    console.log(API_KEY);
     this.GetMovie();
   }
 
@@ -55,17 +57,29 @@ class App extends Component {
 
     return (
       <div className="App" >
-        <Heder />
-        <Search search={this.serht} bntsearch={this.GetMovie} searchText={this.state.searchText} />
-        <Filter filtr={this.GetFiltr} />
-        {
-          loading ? <Loader /> : films && films.length > 0 ? <CardList films={films} /> : <Emprety />
-        }
-        <Footer />
+        <BrowserRouter>
+          <Heder />
+          <Switch>
+
+            <Route path="/movie/" exact render={() => {
+              return (
+                <>
+                  <Search search={this.serht} bntsearch={this.GetMovie} searchText={this.state.searchText} />
+                  <Filter filtr={this.GetFiltr} />
+                  {
+                    loading ? <Loader /> : films && films.length > 0 ? <CardList films={films} /> : <Emprety />
+                  }
+                  <Navigation />
+                </>)
+            }} />
+            <Route path="/movie/:id?" render={({ match }) => <CardInfo imdbID={match.params.id} />} />
+            <Route render={() => <div></div>} />
+          </Switch>
+          <Footer />
+        </BrowserRouter>
       </div >
     );
   }
 }
-
 
 export default App;
