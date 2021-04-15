@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Heder from './components/Heder/Heder';
 import Footer from './components/Footer/Footer';
-import Search from './components/search/search';
+import Search from './components/Search/Search';
 import CardList from './Card/Cardlist/Cardlist';
 import Loader from './components/Loader/loader';
 import Emprety from './components/Emprety/Emprety';
@@ -43,17 +43,17 @@ class App extends Component {
   }
 
   select = (id) => {
-
+ 
     this.setState({ selectId: id }, () => this.GetMovie(id));
   }
 
   GetFiltr = (event) => {
 
-    this.setState({ filters: event.target.value }, () => this.GetMovie(1))
+    this.setState({ filters: event.target.value }, () => this.GetMovie(2))
   }
 
   componentDidMount() {
-
+ 
     this.GetMovie(1);
   }
 
@@ -67,13 +67,13 @@ class App extends Component {
           <Heder />
           <Switch>
 
-            <Route path="/movie/" exact render={() => {
+            <Route path="/movie/page/:id?" exact render={() => {
               return (
                 <>
                   <Search search={this.serht} bntsearch={this.GetMovie} searchText={this.state.searchText} />
                   <Filter filtr={this.GetFiltr} />
                   {
-                    loading ? <Loader /> : films && films.length > 0 ?
+                     loading ? <Loader /> : films && films.length > 0 ?
                       <CardList
                         films={films}
                         get={this.GetMovie}
@@ -84,6 +84,7 @@ class App extends Component {
                 </>)
             }} />
             <Route path="/movie/:id?" render={({ match }) => <CardInfo imdbID={match.params.id} />} />
+
             <Route render={() => <div></div>} />
           </Switch>
           <Footer />
