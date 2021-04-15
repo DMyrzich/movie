@@ -1,0 +1,12 @@
+.aboutme{
+ 
+    display: grid;
+    grid-template-columns: 20% 5% 22% 52%;  
+
+}
+
+img {
+    width: 300px;
+    height: 300px;
+
+}

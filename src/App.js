@@ -8,7 +8,9 @@ import Loader from './components/Loader/loader';
 import Emprety from './components/Emprety/Emprety';
 import Filter from './components/Filter/Filter';
 import CardInfo from './Card/CardInfo/CardInfo';
+import PageNotFound from './components/PageNotFound/PageNotFound'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import About from './components/About/About';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -67,7 +69,7 @@ class App extends Component {
           <Heder />
           <Switch>
 
-            <Route path="/movie/page/:id?" exact render={() => {
+            <Route path="/movie" exact render={() => {
               return (
                 <>
                   <Search search={this.serht} bntsearch={this.GetMovie} searchText={this.state.searchText} />
@@ -84,7 +86,8 @@ class App extends Component {
                 </>)
             }} />
             <Route path="/movie/:id?" render={({ match }) => <CardInfo imdbID={match.params.id} />} />
-            <Route render={() => <div></div>} />
+            <Route path="/about" component={About} />
+            <Route component={PageNotFound} />
           </Switch>
           <Footer />
         </BrowserRouter>
