@@ -9,7 +9,6 @@ const About = () => {
             <p style={{ color: '#1E88E5', fontSize: 100, margin: 0 }}>+</p>
             <div>
                 <h3 style={{ margin: 0 }}>Василий Пароцкий</h3>
-
                 <button className="waves-effect waves-light btn-small darken-1">Напишите мне</button>
             </div>
         </div>
