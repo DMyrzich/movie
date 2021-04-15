@@ -19,7 +19,7 @@ class App extends Component {
   state = {
     films: [],
     searchText: '',
-    loading: false,
+    loading: true,
     errror: null,
     filters: '',
     selectId: 1,
@@ -46,7 +46,7 @@ class App extends Component {
 
   select = (id) => {
 
-    this.setState({ selectId: id }, () => this.GetMovie(id));
+    this.setState({ loading: true, selectId: id }, () => this.GetMovie(id));
   }
 
   GetFiltr = (event) => {
