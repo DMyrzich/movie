@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   select = (id) => {
- 
+
     this.setState({ selectId: id }, () => this.GetMovie(id));
   }
 
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   componentDidMount() {
- 
+
     this.GetMovie(1);
   }
 
@@ -73,7 +73,7 @@ class App extends Component {
                   <Search search={this.serht} bntsearch={this.GetMovie} searchText={this.state.searchText} />
                   <Filter filtr={this.GetFiltr} />
                   {
-                     loading ? <Loader /> : films && films.length > 0 ?
+                    loading ? <Loader /> : films && films.length > 0 ?
                       <CardList
                         films={films}
                         get={this.GetMovie}
@@ -84,7 +84,6 @@ class App extends Component {
                 </>)
             }} />
             <Route path="/movie/:id?" render={({ match }) => <CardInfo imdbID={match.params.id} />} />
-
             <Route render={() => <div></div>} />
           </Switch>
           <Footer />
